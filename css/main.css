@@ -33,3 +33,5 @@ body {
 #container .navbar-default .navbar-brand span {
 	font-size: 10px;
 }
+
+#container .container .row h3 { font-size: 12;}

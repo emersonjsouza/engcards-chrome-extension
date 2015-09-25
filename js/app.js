@@ -1,2 +1,2 @@
-app = angular.module('esouza.engcards', []);
+app = angular.module('esouza.engcards', ['ngMaterial']);
 
