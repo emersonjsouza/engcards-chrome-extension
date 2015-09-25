@@ -10,7 +10,7 @@ body {
 }
 
 .navbar-default input{
-	width: 165px;
+	width: 240px;
 }
 
 .navbar-default .navbar-nav {
@@ -35,3 +35,5 @@ body {
 }
 
 #container .container .row h3 { font-size: 12;}
+
+#container .red { background-color: #db4c3f; }

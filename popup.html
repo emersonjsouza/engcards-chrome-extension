@@ -19,9 +19,6 @@
                             <input type="text" class="form-control" placeholder="Search a word">
                         </li>
                         <li>
-                            <a href="javascript:void(0)"><i class="fa fa-plus"></i> word</a>
-                        </li>
-                        <li>
                             <a href="javascript:void(0)">
                                 <i class="fa fa-cog"></i> settings
                                 <span class="badge">1</span>
@@ -49,15 +46,21 @@
 				          <p>{{ 'description about this word.' }}</p>
 				        </div>
 		      		</md-list-item>
-		      </md-list>
+		      	</md-list>
 		    </md-content>
     	</div>
+    	<md-button class="md-accent red md-fab md-fab-bottom-right">
+	        <i class="fa fa-plus"></i>
+	         <md-tooltip md-visible="demo.showTooltip">
+        		add new word
+      		</md-tooltip>
+     	</md-button>
     </div>
+
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
     <script src="js/angular.js"></script>
-
     <script src="js/angular-aria.js"></script>
     <script src="js/angular-animate.js"></script>
     <script src="js/angular-material.js"></script>
