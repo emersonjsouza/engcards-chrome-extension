@@ -9,14 +9,14 @@
   </head>
 
   <body>
-    <div id="container">
+    <div id="container" ng-controller="mainCrl">
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                     <a class="navbar-brand" href="#">EngCards <span>beta</span></a>
+                     <a class="navbar-brand">EngCards <span>beta</span></a>
                      <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <input type="text" class="form-control" placeholder="Search a word">
+                            <input id="searchField" ng-model="search" type="text" class="form-control" placeholder="Search a word">
                         </li>
                         <li>
                             <a href="javascript:void(0)">
@@ -29,32 +29,44 @@
             </div><!-- /.container-fluid -->
         </nav>
         <div class="container">
-        <div class="col-lg-12">
-           	<md-content>
-		    	<md-list>
-		      		<md-subheader class="md-no-sticky"><strong>WORD LIST</strong></md-subheader>
-		      		<md-list-item class="md-3-line">
+        <div class="col-lg-14">
+            <md-content>
+                <md-list>
+		      		<md-list-item class="md-3-line" ng-repeat="item in filteredWords = (service.words | filter:sensitiveSearch | orderBy:order)">
 		        		<div class="md-list-item-text" layout="column">
-				          <h3>{{ 'Have fun' }}</h3>
-				          <p>{{ 'description about this word.' }}</p>
-				        </div>
+				            <h3>{{ item.word }}</h3>
+				            <p>{{ item.note }}</p>
+                            <md-checkbox ng-model="item.isDelete" class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+                        </div>
+                    <md-divider ></md-divider>
 		      		</md-list-item>
-		      		<md-divider ></md-divider>
-		      		<md-list-item class="md-3-line">
-		        		<div class="md-list-item-text" layout="column">
-				          <h3>{{ 'Have fun' }}</h3>
-				          <p>{{ 'description about this word.' }}</p>
-				        </div>
-		      		</md-list-item>
-		      	</md-list>
+                    
+                    <md-list-item class="md-3-line" ng-show="filteredWords.length == 0 && service.words.length > 0">
+                        <div class="md-list-item-text" layout="column">
+                          <h3>No results found for search term '{{ search }}'</h3>
+                        </div>
+                    </md-list-item>
+                     <md-list-item class="md-3-line" ng-show="service.words.length == 0">
+                        <div class="md-list-item-text" layout="column">
+                          <h3>No words saved, <a href="javascript:void(0);" ng-click="showAdd()"> tap here add one.</a></h3>
+                        </div>
+                    </md-list-item>
+                </md-list>
+
 		    </md-content>
     	</div>
-    	<md-button class="md-accent red md-fab md-fab-bottom-right">
+        
+        <md-button ng-click="delete()" ng-show="showDelete" class="md-warn md-raised md-hue-2">
+            <i class="fa fa-trash"></i> Delete all
+        </md-button>
+
+    	<md-button ng-click="showAdd()" class="md-accent red md-fab md-fab-bottom-right">
 	        <i class="fa fa-plus"></i>
 	         <md-tooltip md-visible="demo.showTooltip">
         		add new word
       		</md-tooltip>
      	</md-button>
+
     </div>
 
     <script src="js/jquery.js"></script>

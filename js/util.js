@@ -76,7 +76,8 @@ function renderStatus(statusText) {
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Hello Extension');
   console.log(this);
-
+  $('#searchField').focus();
+  
 });
 
 //Helper

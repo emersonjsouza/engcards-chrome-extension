@@ -1,0 +1,30 @@
+<md-dialog aria-label="Mango (Fruit)">
+    <form ng-submit="add()">
+        <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Add new word</h2>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <i class="fa fa-close"></i>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+        <md-input-container>
+            <label>Word</label>
+            <input ng-model="item.word" required>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Notes</label>
+            <input ng-model="item.note">
+        </md-input-container>
+
+    </md-dialog-content>
+    <div class="md-actions" layout="row">
+        <md-button type="submit">
+            CREATE
+        </md-button>
+    </div>
+  </form>
+</md-dialog>
