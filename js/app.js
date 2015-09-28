@@ -1,22 +1,47 @@
 app = angular.module('esouza.engcards', ['ngMaterial']);
 
 app.service('WordService', function() {
+    
     var wordService = {
         words: [],
-        load: function () {
-                
+        onLoaded: [],
+        add: function (word) {
+            wordService.words.push(word);
+            chrome.storage.sync.set({"engcards.words": this.words});
+        },
+        remove: function(word) {
+            var index = wordService.words.indexOf(word);
+            wordService.words.splice(index, 1);
+            chrome.storage.sync.set({"engcards.words": this.words});  
         }
     };
 
-    wordService.load();
+    var load = function () {
+        chrome.storage.sync.get(function(data) { 
+            if (data["engcards.words"]) {
+                wordService.onLoaded.forEach(function(callback) {
+                    callback(data["engcards.words"]);
+                });
+            }
+        });
+    };
+
+    load();
 
     return wordService;
 });
 
 app.controller('mainCrl', function($scope, $mdDialog, WordService) {
+    
     $scope.search = "";
     $scope.service = WordService;
     $scope.showDelete = false;
+
+    WordService.onLoaded.push(function(words) {
+        $scope.$apply(function() {
+            WordService.words = words;            
+        })
+    });
 
     $scope.sensitiveSearch = function (item) {
         if ($scope.search) {
@@ -41,7 +66,7 @@ app.controller('mainCrl', function($scope, $mdDialog, WordService) {
         var items = [];
         angular.forEach($scope.service.words, function(item, index) {
             if (item.isDelete) {
-                items.push(item);
+               items.push(item);
             }
         });
 
@@ -55,8 +80,7 @@ app.controller('mainCrl', function($scope, $mdDialog, WordService) {
               .cancel('NO');
             $mdDialog.show(confirm).then(function() {
                 for (var i =0; i < items.length; i++) {
-                    var index = $scope.service.words.indexOf(items[i]);
-                    $scope.service.words.splice(index, 1);
+                    WordService.remove(items[i]);
                 }
             });
         }
@@ -70,7 +94,8 @@ app.controller('mainCrl', function($scope, $mdDialog, WordService) {
             targetEvent: ev
         }).then(function(item) {
             if (item.word) {
-                $scope.service.words.push(item);
+                item.id = generateUUID();
+                WordService.add(item);
             }
         });
     };

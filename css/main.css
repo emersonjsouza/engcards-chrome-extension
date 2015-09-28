@@ -26,6 +26,10 @@ body {
 	background-color: #db4c3f;
 }
 
+#container a.md-button.md-hue-2.md-warn.md-raised, a.md-button.md-hue-2.md-warn.md-fab, .md-button.md-hue-2.md-warn.md-raised, .md-button.md-hue-2.md-warn.md-fab {
+	background-color: #db4c3f;	
+}
+
 md-checkbox.md-checked .md-icon {
 	background-color: #db4c3f;	
 }
@@ -38,21 +42,54 @@ md-checkbox.md-checked .md-icon {
 	font-size: 10px;
 }
 
-#container .container .row h3 { font-size: 12;}
+#container .container .row h3 { 
+	font-size: 12;
+}
 
-#container .red { background-color: #db4c3f; }
+#container .red { 
+	background-color: #db4c3f;
+	 }
 
-#container md-list { height: 450px;}
+#container md-list { 
+	height: 450px;
+}
 
-#container .ng-hide { display: none;}
+#container .ng-hide { 
+	display: none;
+}
 
-.md-button.md-warn { position: absolute; right: 40%;}
+.md-button.md-warn { 
+	position: absolute; right: 40%;
+}
 
-.dialogdemoBasicUsage #popupContainer { position: relative; }
-.dialogdemoBasicUsage .debt-be-gone { font-weight: bold; color: blue; text-decoration: underline; }
-.dialogdemoBasicUsage .footer { width: 100%; text-align: center; margin-left: 20px; }
-.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code { font-size: 0.8em; margin-top: 50px; }
-.md-dialog-container md-toolbar { background-color: #db4c3f; }
+.dialogdemoBasicUsage #popupContainer { 
+	position: relative;
+}
 
-.md-dialog-container md-input-container.md-input-focused label { color: #db4c3f;}
-.md-dialog-container md-input-container:not(.md-input-invalid).md-input-focused .md-input { border-color: #db4c3f;}
+.dialogdemoBasicUsage .debt-be-gone { 
+	font-weight: bold; color: blue; 
+	text-decoration: underline; 
+}
+
+.dialogdemoBasicUsage .footer { 
+	width: 100%; 
+	text-align: center;
+	margin-left: 20px; 
+}
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code { 
+	font-size: 0.8em; 
+	margin-top: 50px; 
+}
+
+.md-dialog-container md-toolbar { 
+	background-color: #db4c3f;
+}
+
+.md-dialog-container md-input-container.md-input-focused label { 
+	color: #db4c3f;
+}
+
+.md-dialog-container md-input-container:not(.md-input-invalid).md-input-focused .md-input { 
+	border-color: #db4c3f;
+}

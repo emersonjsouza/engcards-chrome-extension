@@ -32,7 +32,7 @@
         <div class="col-lg-14">
             <md-content>
                 <md-list>
-		      		<md-list-item class="md-3-line" ng-repeat="item in filteredWords = (service.words | filter:sensitiveSearch | orderBy:order)">
+		      		<md-list-item class="md-3-line" ng-repeat="item in filteredWords = (service.words  | filter:sensitiveSearch | orderBy:order) track by $index">
 		        		<div class="md-list-item-text" layout="column">
 				            <h3>{{ item.word }}</h3>
 				            <p>{{ item.note }}</p>
@@ -48,12 +48,11 @@
                     </md-list-item>
                      <md-list-item class="md-3-line" ng-show="service.words.length == 0">
                         <div class="md-list-item-text" layout="column">
-                          <h3>No words saved, <a href="javascript:void(0);" ng-click="showAdd()"> tap here add one.</a></h3>
+                          <h3>No words save, <a href="javascript:void(0);" ng-click="showAdd()"> tap here add one.</a></h3>
                         </div>
                     </md-list-item>
                 </md-list>
-
-		    </md-content>
+            </md-content>
     	</div>
         
         <md-button ng-click="delete()" ng-show="showDelete" class="md-warn md-raised md-hue-2">
