@@ -21,7 +21,8 @@ chrome.contextMenus.onClicked.addListener(onClickHandler);
 
 // The onClicked callback function.
 function onClickHandler(info, tab) {
-    var word = {
+    
+    var item = {
     				id: generateUUID(),
     				word: info.selectionText,
     				notes: ''
@@ -30,10 +31,19 @@ function onClickHandler(info, tab) {
     chrome.storage.sync.get(function(data) { 
         if (data["engcards.words"]) {
          	var words = data["engcards.words"];
-         	words.push(word);
+         	words.push(item);
          	chrome.storage.sync.set({"engcards.words": words});
         }
 
-         alert('text add with success !');
+        if (window.Notification) { 
+            var notification = new Notification('Added to EngCards', {
+                icon: 'icon_48.png',
+                body: item.word
+            });
+
+            setTimeout(function(){
+                notification.close();
+            },2000);
+        }
     });
 };
