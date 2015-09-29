@@ -10,7 +10,8 @@ body {
 }
 
 .navbar-default input{
-	width: 240px;
+	width: 320px;
+	/* width: 240px; */
 }
 
 .navbar-default .navbar-nav {
