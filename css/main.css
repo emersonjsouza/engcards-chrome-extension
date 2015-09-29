@@ -9,6 +9,11 @@ body {
   height: 480px;
 }
 
+html body {
+	position: static!important;
+	width: 520px !important;
+}
+
 .navbar-default input{
 	width: 320px;
 	/* width: 240px; */

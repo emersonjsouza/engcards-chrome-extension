@@ -4,9 +4,6 @@
         <div class="md-toolbar-tools">
             <h2>Add new word</h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="cancel()">
-                <i class="fa fa-close"></i>
-            </md-button>
         </div>
     </md-toolbar>
     <md-dialog-content style="max-width:800px;max-height:810px; ">
@@ -24,6 +21,9 @@
     <div class="md-actions" layout="row">
         <md-button type="submit">
             CREATE
+        </md-button>
+         <md-button ng-click="cancel()">
+            CANCEL
         </md-button>
     </div>
   </form>

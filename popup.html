@@ -40,7 +40,7 @@
                         </div>
                     <md-divider ></md-divider>
 		      		</md-list-item>
-                    
+
                     <md-list-item class="md-3-line" ng-show="filteredWords.length == 0 && service.words.length > 0">
                         <div class="md-list-item-text" layout="column">
                           <h3>No results found for search term '{{ search }}'</h3>
@@ -54,7 +54,7 @@
                 </md-list>
             </md-content>
     	</div>
-        
+
         <md-button ng-click="delete()" ng-show="showDelete" class="md-warn md-raised md-hue-2">
             <i class="fa fa-trash"></i> Delete all
         </md-button>

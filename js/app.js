@@ -1,7 +1,7 @@
 app = angular.module('esouza.engcards', ['ngMaterial']);
 
 app.service('WordService', function() {
-    
+
     var wordService = {
         words: [],
         onLoaded: [],
@@ -12,12 +12,12 @@ app.service('WordService', function() {
         remove: function(word) {
             var index = wordService.words.indexOf(word);
             wordService.words.splice(index, 1);
-            chrome.storage.sync.set({"engcards.words": this.words});  
+            chrome.storage.sync.set({"engcards.words": this.words});
         }
     };
 
     var load = function () {
-        chrome.storage.sync.get(function(data) { 
+        chrome.storage.sync.get(function(data) {
             if (data["engcards.words"]) {
                 wordService.onLoaded.forEach(function(callback) {
                     callback(data["engcards.words"]);
@@ -32,14 +32,14 @@ app.service('WordService', function() {
 });
 
 app.controller('mainCrl', function($scope, $mdDialog, WordService) {
-    
+
     $scope.search = "";
     $scope.service = WordService;
     $scope.showDelete = false;
 
     WordService.onLoaded.push(function(words) {
         $scope.$apply(function() {
-            WordService.words = words;            
+            WordService.words = words;
         })
     });
 
@@ -50,7 +50,7 @@ app.controller('mainCrl', function($scope, $mdDialog, WordService) {
         return true;
     };
 
-    $scope.$watch('service.words', function (newVal, oldVal) { 
+    $scope.$watch('service.words', function (newVal, oldVal) {
         var hasOne = false;
         angular.forEach($scope.service.words, function(item, index) {
             if (item.isDelete) {
@@ -74,7 +74,7 @@ app.controller('mainCrl', function($scope, $mdDialog, WordService) {
             var confirm = $mdDialog.confirm()
               .title('Confirm')
               .content('Are you sure delete all ?')
-              .ariaLabel('Lucky day')
+              .ariaLabel('Confirm - delete')
               .targetEvent(ev)
               .ok('YES')
               .cancel('NO');
@@ -101,13 +101,13 @@ app.controller('mainCrl', function($scope, $mdDialog, WordService) {
     };
 
     function addDialogController($scope, $mdDialog) {
-        
+
         $scope.add = function() {
             $mdDialog.hide($scope.item);
-        }; 
+        };
 
         $scope.cancel = function () {
             $mdDialog.hide();
-        };   
+        };
     };
 });
