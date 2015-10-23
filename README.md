@@ -13,3 +13,6 @@ AngularJS with Material Design implementation
 
 ### Contact me
 Emerson Jose <emersonjprogramador@gmail.com>
+
+## License
+MIT
